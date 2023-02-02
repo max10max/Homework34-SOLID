@@ -9,12 +9,12 @@ public class Main {
 
         System.out.println("Введите два слова: название товара и количество. Или end");
         Scanner scanner = new Scanner(System.in);
-        Purchase purchase = new Purchase(products.size());
+        Basket purchase = new Basket(products.size());
         while (true) {
             String line = scanner.nextLine();
             if ("end".equals(line)) break;
             String[] parts = line.split(" ");
-            Product product = new Product(parts[0], Integer.parseInt(parts[1]));
+            Purchase product = new Purchase(parts[0], Integer.parseInt(parts[1]));
             purchase.addPurchase(product);
         }
         long sum = purchase.sum(products);

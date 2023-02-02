@@ -1,34 +1,28 @@
 import java.util.Map;
 
 public class Purchase {
-    protected Product[] purchases;
+    protected String title;
+    protected int count;
 
-    public Purchase(int sizePurchase) {
-        this.purchases = new Product[sizePurchase];
+
+    public Purchase(String title, int count) {
+        this.title = title;
+        this.count = count;
     }
 
-    public void addPurchase(Product product) {
-        for (int i = 0; i < purchases.length; i++) {
-            if (purchases[i] == null) {
-                purchases[i] = product;
-                return;
-            }
-            if (purchases[i].getTitle().equals(product.getTitle())) {
-                purchases[i].setCount(purchases[i].getCount() + product.getCount());
-                return;
-            }
-        }
+    public String getTitle() {
+        return title;
     }
 
-    public long sum(Map<String, Integer> prices) {
-        long sum = 0;
-        System.out.println("КОРЗИНА:");
-        for (int i = 0; i < purchases.length; i++) {
-            Product purchase = purchases[i];
-            if (purchase == null) continue;
-            System.out.println("\t" + purchase.getTitle() + " " + purchase.getCount() + " шт. в сумме " + (purchase.getCount() * prices.get(purchase.getTitle())) + " руб.");
-            sum += purchase.getCount() * prices.get(purchase.getTitle());
-        }
-        return sum;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 }
